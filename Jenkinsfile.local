@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    triggers { githubPush() }
+    options { timestamps() }
+
+    environment { COMPOSE_PROJECT_NAME = 'cicd-blog' }
+
+    stages {
+        stage('Backend test') {
+            steps {
+                dir('backend') { sh 'mvn -q clean test' }
+            }
+        }
+        stage('Frontend build') {
+            steps {
+                dir('frontend') { sh 'npm install && npm run build' }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'docker compose -p $COMPOSE_PROJECT_NAME up -d --build --remove-orphans'
+            }
+        }
+    }
+
+    post {
+        always { junit allowEmptyResults: true, testResults: 'backend/target/surefire-reports/*.xml' }
+    }
+}

@@ -1,0 +1,11 @@
+:root { font-family: Inter, Pretendard, system-ui, sans-serif; color: #eef2ff; background: #101827; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+main { min-height: 100vh; display: grid; place-items: center; padding: 2rem; background: radial-gradient(circle at 75% 20%, #30497b 0, transparent 35%), #101827; }
+.hero { width: min(680px, 100%); padding: clamp(2rem, 7vw, 5rem); border: 1px solid #6074a5; border-radius: 1.5rem; background: rgb(16 24 39 / 75%); box-shadow: 0 20px 60px #03071280; }
+.eyebrow { margin: 0 0 1.25rem; color: #a8c7fa; font-size: .78rem; font-weight: 800; letter-spacing: .16em; }
+h1 { margin: 0; font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.02; letter-spacing: -.06em; }
+.description { max-width: 37rem; margin: 2rem 0; color: #c7d2fe; line-height: 1.7; word-break: keep-all; }
+.health { display: inline-flex; align-items: center; gap: .6rem; padding: .65rem .9rem; border-radius: 100px; background: #193a2a; color: #a7f3d0; font-size: .9rem; font-weight: 700; }
+.health.error { background: #471c25; color: #fecaca; }
+.dot { width: .55rem; height: .55rem; border-radius: 50%; background: currentColor; box-shadow: 0 0 12px currentColor; }
